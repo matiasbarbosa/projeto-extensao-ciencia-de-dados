@@ -1,0 +1,2 @@
+IBM Plex Sans e IBM Plex Mono - Copyright © 2017 IBM Corp. Licenciadas sob a SIL Open Font License 1.1
+(https://github.com/IBM/plex/blob/master/LICENSE.txt). Arquivos obtidos do pacote @ibm/plex-sans e @ibm/plex-mono.

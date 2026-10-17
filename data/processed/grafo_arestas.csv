@@ -1,0 +1,92 @@
+origem,destino,peso,lift
+marca: Xiaomi/Redmi/POCO,ram: 12 GB+,8,1.065444332097517
+marca: Xiaomi/Redmi/POCO,chip: Qualcomm,9,1.280264957880337
+marca: Xiaomi/Redmi/POCO,erro: erro_auth,6,
+marca: Xiaomi/Redmi/POCO,ram: 8 GB,9,1.1794796959365341
+marca: Xiaomi/Redmi/POCO,erro: retorno_tela_inicial,5,
+marca: Xiaomi/Redmi/POCO,android: 16,9,1.0458411264424603
+marca: Xiaomi/Redmi/POCO,erro: falha_login_generica,10,
+marca: Xiaomi/Redmi/POCO,chip: MediaTek,11,1.0673380720232852
+android: 14,marca: Motorola,7,
+android: 14,ram: 8 GB,7,1.3416198877305532
+ram: 12 GB+,chip: Qualcomm,22,1.075972512855719
+ram: 12 GB+,erro: erro_auth,10,
+ram: 12 GB+,marca: Motorola,11,
+ram: 12 GB+,android: 16,36,
+ram: 12 GB+,chip: MediaTek,12,1.0195403880555938
+ram: 12 GB+,erro: falha_login_generica,11,
+ram: 12 GB+,marca: Samsung,25,
+ram: 12 GB+,chip: Samsung Exynos,10,0.8306728966199607
+ram: 12 GB+,erro: codigo_verificacao,6,
+ram: 12 GB+,erro: retorno_tela_inicial,12,
+chip: Qualcomm,erro: erro_auth,10,
+chip: Qualcomm,marca: Samsung,24,
+chip: Qualcomm,android: 16,23,
+chip: Qualcomm,ram: 8 GB,20,
+chip: Qualcomm,erro: retorno_tela_inicial,14,
+chip: Qualcomm,erro: falha_login_generica,7,
+chip: Qualcomm,android: 13,6,
+chip: Qualcomm,marca: Motorola,10,
+chip: Qualcomm,erro: codigo_verificacao,5,
+chip: Qualcomm,android: 15,5,
+erro: erro_auth,marca: Motorola,10,
+erro: erro_auth,marca: Samsung,25,
+erro: erro_auth,android: 16,14,
+erro: erro_auth,ram: 8 GB,13,
+erro: erro_auth,chip: MediaTek,11,
+erro: erro_auth,android: 15,5,
+erro: erro_auth,chip: Samsung Exynos,5,
+marca: Motorola,erro: retorno_tela_inicial,26,
+marca: Motorola,android: 16,18,2.134141999287883
+marca: Motorola,app: 6.1.2,6,
+marca: Motorola,chip: MediaTek,10,1.0360933588779033
+marca: Motorola,erro: falha_login_generica,19,
+marca: Motorola,ram: 8 GB,19,2.387415997116873
+marca: Motorola,chip: Unisoc,12,6.050118235484255
+marca: Motorola,android: 15,6,1.2084324412488276
+marca: Motorola,modelo: moto g35,7,6.814216265930889
+marca: Motorola,erro: codigo_verificacao,5,
+marca: Motorola,erro: carregamento,5,
+erro: retorno_tela_inicial,marca: Samsung,35,
+erro: retorno_tela_inicial,android: 16,28,
+erro: retorno_tela_inicial,ram: 8 GB,26,
+erro: retorno_tela_inicial,chip: Samsung Exynos,16,
+erro: retorno_tela_inicial,android: 13,5,
+erro: retorno_tela_inicial,chip: Unisoc,8,
+erro: retorno_tela_inicial,chip: MediaTek,6,
+erro: retorno_tela_inicial,app: 6.1.2,5,
+marca: Samsung,erro: falha_login_generica,23,
+marca: Samsung,erro: codigo_verificacao,9,
+marca: Samsung,android: 16,52,0.9110036533027512
+marca: Samsung,ram: 8 GB,42,0.8917405716913965
+marca: Samsung,chip: Samsung Exynos,37,0.8907001112834968
+marca: Samsung,app: 6.2.0,5,
+marca: Samsung,app: 6.3.6,5,
+marca: Samsung,app: 6.2.5,5,
+marca: Samsung,chip: MediaTek,12,0.9587887349764638
+marca: Samsung,android: 13,10,0.9465860490668608
+marca: Samsung,rede: 5g,6,
+marca: Samsung,erro: biometria,5,
+marca: Samsung,ram: 6 GB,5,0.690867384047295
+erro: falha_login_generica,android: 16,20,
+erro: falha_login_generica,chip: MediaTek,12,
+erro: falha_login_generica,ram: 8 GB,16,
+erro: falha_login_generica,chip: Samsung Exynos,8,
+erro: codigo_verificacao,android: 16,6,
+erro: codigo_verificacao,ram: 8 GB,5,
+android: 16,ram: 8 GB,42,1.1211864086170276
+android: 16,chip: Samsung Exynos,28,0.9505398712006836
+android: 16,chip: MediaTek,21,1.0408770477408997
+android: 16,modelo: moto g35,7,
+android: 16,chip: Unisoc,7,5.43908130358407
+android: 16,rede: 5g,7,
+ram: 8 GB,chip: Samsung Exynos,23,0.9713716498246444
+ram: 8 GB,android: 13,12,
+ram: 8 GB,chip: Unisoc,11,6.069897778688067
+ram: 8 GB,chip: MediaTek,17,1.0547855725184447
+ram: 8 GB,rede: 5g,7,
+ram: 8 GB,modelo: moto g35,7,
+ram: 8 GB,android: 15,6,
+ram: 8 GB,erro: biometria,5,
+chip: MediaTek,android: 13,6,
+chip: Unisoc,modelo: moto g35,7,

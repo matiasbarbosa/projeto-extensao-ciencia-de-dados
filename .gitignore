@@ -1,0 +1,26 @@
+# Ambiente
+.venv/
+__pycache__/
+*.pyc
+.env
+
+# Exportações brutas do ServiceNow: NUNCA versionar (podem conter dados pessoais)
+data/raw/servicenow/*
+!data/raw/servicenow/.gitkeep
+
+# Tabela de correspondência de pseudônimos e sal: fica só com a empresa
+data/private/
+
+# Editores / SO
+.vscode/
+.idea/
+.DS_Store
+
+# Banco SQLite local (gerado pelo pipeline)
+*.sqlite
+
+# Ferramentas locais do editor/agente
+.opencode/
+
+# Capturas de revisão de design
+.impeccable/
