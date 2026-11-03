@@ -10,7 +10,7 @@
 
 web
 
-## Users
+## Usuários
 
 - **Principal: a professora orientadora (Ana Carolina Carius, Unicarioca, disciplina SM262207).**
   Avalia o projeto contra o Plano de Ação: clareza do recorte, método, rastreabilidade entre
@@ -24,7 +24,7 @@ web
 - **Secundário: leigos (resumo executivo).** São atendidos pelo resumo executivo ou infográfico
   exigido pelo Plano de Ação, não pelo dashboard.
 
-## Product Purpose
+## Propósito
 
 Diagnóstico analítico dos perfis de aparelho Android associados às falhas de login no app EPX,
 comparando cada grupo à população total de aparelhos com o app instalado. O produto é um
@@ -37,7 +37,7 @@ Sucesso significa: a professora consegue seguir cada número desde a fonte até 
 equipe do parceiro sai sabendo quais grupos têm taxa acima do esperado, com intervalo de
 confiança, e quais não têm diferença clara. **Não** se busca a causa raiz.
 
-## Positioning
+## Posicionamento
 
 Compara **taxas** contra a base instalada real do Google Play Console em vez de contar chamados.
 Uma marca que domina a base sempre terá mais incidentes; o projeto mostra quem está acima do
@@ -45,7 +45,7 @@ esperado para o seu tamanho. Junta ServiceNow, Google Play Console e (pendente) 
 rastreabilidade explícita (funil de dados) e usa um grafo de co-ocorrência de atributos para
 revelar combinações super-representadas.
 
-## Operating Context
+## Contexto Operacional
 
 - Projeto individual de extensão, EAD, com entregas por etapas e data final fixa.
 - Fontes:
@@ -64,7 +64,7 @@ revelar combinações super-representadas.
   IC 95% exato de Poisson, teste binomial, Benjamini-Hochberg, risco relativo, GLM de Poisson)
   → grafo (NetworkX, centralidade, Louvain, lift) → dashboard.
 
-## Capabilities and Constraints
+## Restrições e capacidades
 
 - **Dados do dashboard publicado: simulados (Plano B).** A versão hospedada usa incidentes
   gerados por `src/simular_incidentes.py` a partir do catálogo real, rotulados como simulados em
@@ -88,14 +88,14 @@ revelar combinações super-representadas.
   repositório). Entregáveis públicos seguem com base simulada e agregados, por sigilo.
 - Em aberto: cruzamento com Instana (R1); se o Instana tem monitoramento mobile.
 
-## Brand Commitments
+## Compromissos
 
 - Idioma: português do Brasil. Tom direto, factual, sem exagero; explica a estatística em
   linguagem simples antes de mostrar o número.
 - Parceiro sempre como "Entidade de Previdência X (EPX)", app como "App EPX".
 - Aviso de dados simulados visível e inequívoco sempre que a fonte for o simulador.
 
-## Evidence on Hand
+## Evidências disponíveis
 
 - Catálogo real do Play Console: `data/raw/play_console_devices.csv`.
 - Incidentes simulados e gabarito do simulador: `data/processed/incidentes_simulados*.csv`.
@@ -106,7 +106,7 @@ revelar combinações super-representadas.
 - Não existem e não devem ser inventados: depoimentos, validação do parceiro sobre os achados,
   causa raiz confirmada, dados de iOS, cruzamento com Instana.
 
-## Product Principles
+## Princípios
 
 1. **Taxa antes de volume.** Todo grupo é lido contra sua base instalada, com intervalo de
    confiança; contagem absoluta nunca aparece sozinha como conclusão.
@@ -117,7 +117,7 @@ revelar combinações super-representadas.
    pequenos.
 5. **Associação, não causa.** A linguagem nunca promete mais do que o método sustenta.
 
-## Accessibility & Inclusion
+## Accessibilidade
 
 - Exigência do Plano de Ação: visualizações acessíveis e sem distorção de escala (eixos de taxa
   começam em zero; escala logarítmica só quando declarada, como no IRR).
