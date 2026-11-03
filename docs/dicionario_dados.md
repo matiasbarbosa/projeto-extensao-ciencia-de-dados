@@ -41,7 +41,8 @@ Os mesmos dados ficam em CSV em `data/processed/`.
 | participante_pseud | pseudônimo do participante (HMAC-SHA256 com sal) |
 | descricao | texto livre sem dados pessoais (não publicado quando real) |
 | modelo_informado / model_id | modelo identificado no texto e casado ao catálogo |
-| sdk / android | versão do Android citada no texto |
+| sdk / android | versão citada no texto ou imputada a partir do catálogo; consultar `sdk_origem` |
+| sdk_origem | `texto` quando extraída do chamado; `sdk_max_do_modelo` quando imputada; vazio se desconhecida |
 | app_version | versão do app citada no texto |
 | rede | wifi, 4g, 5g, nao_informado |
 | classe_erro | tecnico, conta_cadastro, indefinido |
@@ -93,7 +94,7 @@ sem modelo, sem marca e de iPhone.
 | perfil / modelo / zona | nome exibido, modelo normalizado, zona do mapa (marca) |
 | chip / chip_fab / ram | SoC, fabricante do chip, memória do modelo no Play Console |
 | android_play | versões do Android que o modelo tem no Play Console |
-| android_periodo | versões disponíveis no período dos casos (pesquisa pública; ver `src/perfis_pesquisa.py`) |
+| android_periodo | versões listadas no catálogo para o modelo; não confirmam o sistema usado nos casos |
 | ocorrencias / ocorrencias_tecnicas / afetados | incidentes de login em Android, os técnicos e participantes distintos |
 | base, taxa_por_mil, ic_inf, ic_sup | aparelhos ativos, taxa e IC 95% exato de Poisson |
 | taxa_ajustada | (afetados + taxa geral x 500) / (base + 500), por mil; ordena o ranking |

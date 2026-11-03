@@ -83,3 +83,12 @@ def test_cpf_valido_e_pseudonimo():
 def test_sanitizacao_mencao_e_nome_caixa_alta_isolado():
     t = limpar_texto("consegue acessar. @[FULANO DE TAL] , por favor abrir. Atendido por BELTRANO [NOME]", set(), [], {})
     assert "FULANO" not in t and "BELTRANO" not in t, t
+
+
+def test_versoes_do_modelo_nao_confirmam_versao_do_caso():
+    from src.perfis_pesquisa import versoes_do_modelo
+
+    contexto = versoes_do_modelo("34;35;36")
+    assert all(v in contexto for v in ("14", "15", "16"))
+    assert "uso nos casos não confirmado" in contexto
+    assert versoes_do_modelo(None) == "não informada"

@@ -165,11 +165,12 @@ aba = st.tabs(["Mapa", "Ranking", "Taxas por grupo", "Grafo de atributos", "Mode
 
 # ------------------------------------------------------------------ mapa
 with aba[0]:
+    st.info("Prioridade de teste: Android 15 no moto g35 5G. É uma hipótese de investigação, não uma versão "
+            "confirmada nos chamados nem uma causa comprovada.")
     st.iframe(mapa_html(regs, config.K_MIN), height=780)
     st.caption("Cada bloco é um perfil de aparelho (modelo do catálogo). Clique para ver os detalhes; arraste para "
                "mover e use a roda do mouse para aproximar. A cor indica o status estatístico e o número no topo, a "
-               "posição no ranking. A versão do Android no período vem de pesquisa pública e da lista de versões do "
-               "Play Console: os chamados quase nunca a informam.")
+               "posição no ranking. As versões listadas no catálogo não confirmam o Android instalado nos casos.")
 
 # ------------------------------------------------------------------ ranking
 with aba[1]:
@@ -208,7 +209,8 @@ with aba[2]:
     fig.update_layout(height=max(360, 30 * len(t)), xaxis_rangemode="tozero", legend_orientation="h", legend_y=1.06)
     st.plotly_chart(fig, width="stretch")
     if "android" in dim:
-        st.caption("Base por versão do Android é estimada: o Play Console informa instalações por modelo. Regra usada: "
+        st.caption("As versões e taxas não são observações confirmadas por chamado: a base por versão é estimada "
+                   "e versões ausentes são imputadas. Regra usada: "
                    f"'{config.REGRA_SDK}' (cada modelo contado na versão mais recente que suporta).")
     st.dataframe(t.drop(columns=["destaque", "err_mais", "err_menos"]).round(4), width="stretch", hide_index=True)
 
@@ -216,7 +218,8 @@ with aba[2]:
 with aba[3]:
     st.markdown("Cada nó é um atributo (marca, modelo, chip, Android, versão do app, RAM, tipo de erro). Dois atributos "
                 "ficam ligados quando aparecem **no mesmo incidente técnico**; a espessura é o número de incidentes. "
-                "**Lift** maior que 1 indica que o atributo aparece nos incidentes mais do que sua participação na base.")
+                 "**Lift** maior que 1 indica que o atributo aparece nos incidentes mais do que sua participação na base.")
+    st.caption("Os nós de Android podem usar versões imputadas pelo catálogo, não informadas no chamado.")
     c1, c2, c3 = st.columns(3)
     pmin, pmax = int(arestas["peso"].min()), int(arestas["peso"].max())
     peso_min = c1.slider("Peso mínimo da aresta", pmin, max(pmin + 1, pmax), min(max(pmin, 8), pmax))
@@ -267,7 +270,9 @@ with aba[3]:
 with aba[4]:
     st.markdown("Regressão de Poisson por célula (modelo x versão do Android), com a base de aparelhos como exposição. "
                 "O **IRR** (razão de taxas) mostra quantas vezes a taxa de um grupo é maior que a da categoria de "
-                "referência (**Samsung, Android 14, 8 GB**), controlando pelos outros atributos. Associação, não causa.")
+                 "referência (**Samsung, Android 14, 8 GB**), controlando pelos outros atributos. Associação, não causa.")
+    st.caption("As versões de Android ausentes e a base por versão são estimadas; os coeficientes não demonstram "
+               "risco real de uma versão específica.")
     p = poi[poi["ic_sup"] < 1e6].copy()
     p["sig"] = (p["p_valor"] < 0.05).map({True: "p < 0,05", False: "p ≥ 0,05"})
     p["err_mais"], p["err_menos"] = p["ic_sup"] - p["irr"], p["irr"] - p["ic_inf"]
@@ -295,8 +300,9 @@ with aba[5]:
 #### Limitações
 - Incidente não é aparelho nem pessoa: as taxas contam participantes distintos.
 - Só entra quem abriu chamado (viés de quem reporta).
-- Os chamados quase nunca informam a versão do Android. A base por versão é estimada (regra '{config.REGRA_SDK}'),
-  e a versão provável no período vem de pesquisa pública.
+- Os chamados quase nunca informam a versão do Android. A base por versão é estimada e versões ausentes são
+  imputadas (regra '{config.REGRA_SDK}'). As versões listadas no catálogo não confirmam a versão de cada caso.
+- **Android 15 no moto g35 5G** é prioridade de teste, não uma causa confirmada nem uma versão comprovada nos casos.
 - O Play Console é uma foto de um momento; os incidentes cobrem um período.
 - Resultados indicam **associação**, não causa. A hipótese técnica de cada perfil precisa ser validada pelo time do app.
 - iOS fica fora das taxas, por falta de catálogo.

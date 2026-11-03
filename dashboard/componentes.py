@@ -281,8 +281,7 @@ function painel() {
     </dl></details>
     <details open><summary>Sistema ${SETA}</summary><dl>
       ${item('Marca', esc(d.marca))}${item('Chip (SoC)', esc(d.chip))}${item('Memória', esc(d.ram))}
-      ${item('Android no Play Console', esc(d.androidPlay))}
-      ${item('Android provável no período dos casos', esc(d.androidPeriodo))}
+      ${item('Android listado para o modelo', esc(d.androidPeriodo))}
     </dl></details>
     ${d.sintomas.length ? `<details open><summary>Sintomas relatados ${SETA}</summary><dl>${d.sintomas.map(([s, v]) =>
       `<div class="barra"><span class="t">${esc(s)}</span><i><b style="width:${v}%"></b></i><span>${v}%</span></div>`).join('')}</dl></details>` : ''}

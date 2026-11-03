@@ -107,3 +107,33 @@ data/processed/           bases tratadas e resultados (CSV)
 - O Play Console é uma foto; os incidentes cobrem um período.
 - Associação ≠ causa. iOS fora do escopo (sem dados).
 - Cruzamento com o IBM Instana (R1) pendente.
+
+## Prioridade de investigação: Android 15 no moto g35 5G
+
+O **Android 15 no moto g35 5G é a primeira hipótese para testes**, não uma versão
+comprovadamente responsável pelas falhas. Na análise real, os chamados técnicos desse modelo
+não citam a versão do Android. Entre os 201 chamados técnicos Android, só dois a citam.
+O catálogo informa versões suportadas por modelo, não a versão instalada em cada aparelho.
+
+Na configuração `REGRA_SDK = "max"`, versões ausentes são imputadas pela versão mais recente
+listada para o modelo; as taxas, o grafo e o modelo por versão dependem dessa premissa e
+**não comprovam** qual Android estava instalado nem qual versão tem maior risco real.
+O moto e13, outro modelo em destaque, foi lançado com Android 13 Go, reforçando que não se
+deve atribuir todos os casos ao Android 15.
+
+A escolha do Android 15 para os testes se baseia na
+[documentação da Motorola para o moto g35](https://help.motorola.com/hc/3535/15/global/pt-br/CG1395067443.html)
+e em uma [compilação brasileira publicada em dezembro de 2025](https://www.stockrom.net/2025/12/xt2433-1-retbr-os15-vuoa35-116-60-3.html).
+Um [relato isolado](https://www.reclameaqui.com.br/motorola/motorola-moto-g35-inutilizavel-apos-atualizacao-para-android-15-bugs-travamentos-e-superaquecimento_ueoI516-IN4k7itg/)
+descreve travamentos após uma atualização, mas não trata do app EPX nem prova causalidade.
+Há notícia secundária sobre Android 16 no modelo; data e disponibilidade por aparelho precisam
+ser confirmadas. O Play Console não identifica quem atualizou ou quando.
+
+**Como validar:** registrar, com o time do app, a versão real do Android e do aplicativo em
+novos incidentes; testar o login no moto g35 com Android 15 e comparar com outras versões
+disponíveis e configurações de bateria; observar a restauração do estado ao alternar para o
+app de mensagens e voltar. Conforme a
+[documentação do Android](https://developer.android.com/topic/libraries/architecture/saving-states),
+o sistema pode encerrar um processo em segundo plano; isso não demonstra que tenha ocorrido
+nos incidentes. As proteções de OTP do Android 15 restringem o acesso de certos apps a
+notificações e, por si só, também não provam uma falha de login.

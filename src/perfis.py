@@ -29,7 +29,7 @@ from src.analise import _ic_poisson
 PESO_PRIOR = 500  # aparelhos "emprestados" da taxa geral no ajuste do ranking
 
 from src.perfis_pesquisa import (HIPOTESE_MOTOROLA_UNISOC, PERFIL_PESQUISA, fontes_de,
-                                 versoes_no_periodo)
+                                 versoes_do_modelo)
 
 
 def _android_lista(sdk_list: str) -> str:
@@ -100,7 +100,7 @@ def construir(inc: pd.DataFrame, cat: pd.DataFrame, pop: pd.DataFrame, tec: pd.D
         linhas.append({
             "perfil": nome, "modelo": modelo, "zona": a["marca"], "marca": a["marca"], "chip": a["soc"],
             "chip_fab": a["soc_fab"], "ram": _ram_texto(a["ram"], a["ram_faixa"]), "android_play": _android_lista(a["sdk_list"]),
-            "android_periodo": versoes_no_periodo(nome, ini, fim, a["sdk_list"]),
+            "android_periodo": versoes_do_modelo(a["sdk_list"]),
             "ocorrencias": len(g), "ocorrencias_tecnicas": len(t), "afetados": k, "base": b,
             "taxa_por_mil": 1000 * k / b if b else np.nan, "ic_inf": 1000 * lo / b if b else np.nan,
             "ic_sup": 1000 * hi / b if b else np.nan, "risco_relativo": rr, "p_valor": p,
@@ -109,7 +109,8 @@ def construir(inc: pd.DataFrame, cat: pd.DataFrame, pop: pd.DataFrame, tec: pd.D
             "sintomas_json": _top(t["subtipo_erro"], 4), "versoes_app_json": _top(g["app_version"], 3),
             "inicio": ini, "fim": fim, "tem_taxa": 1,
             "resumo": pesq.get("resumo", ""),
-            "hipotese": HIPOTESE_MOTOROLA_UNISOC if (a["marca"] == "Motorola" and a["soc_fab"] == "Unisoc") else "",
+            "hipotese": pesq.get("hipotese", HIPOTESE_MOTOROLA_UNISOC)
+                        if (a["marca"] == "Motorola" and a["soc_fab"] == "Unisoc") else "",
             "fontes_json": json.dumps(fontes_de(nome, a["marca"], a["soc_fab"]), ensure_ascii=False),
         })
     perf = pd.DataFrame(linhas)
