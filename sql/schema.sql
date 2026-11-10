@@ -79,17 +79,6 @@ CREATE TABLE incidents (
 	PRIMARY KEY (inc_id)
 )COMMENT='Incidentes de login (anonimizados ou simulados)';
 
-CREATE TABLE instana_requests (
-	req_id VARCHAR(24) NOT NULL, 
-	participante_pseud VARCHAR(16), 
-	ts DATETIME, 
-	servico VARCHAR(60), 
-	endpoint VARCHAR(120), 
-	http_status INTEGER, 
-	latencia_ms INTEGER, 
-	PRIMARY KEY (req_id)
-)COMMENT='Requisições ao PRD (pseudonimizadas na origem) - R1';
-
 CREATE TABLE lineage (
 	ordem INTEGER NOT NULL, 
 	etapa VARCHAR(120), 

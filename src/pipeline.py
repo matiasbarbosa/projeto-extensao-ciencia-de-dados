@@ -52,7 +52,6 @@ def funil(inc: pd.DataFrame, tec: pd.DataFrame) -> pd.DataFrame:
         ("... com modelo casado ao catálogo Play Console (R2)", int(tec["model_id"].notna().sum())),
         ("... com versão do Android citada no texto", sdk_txt),
         ("Participantes distintos (técnicas em Android)", tec["participante_pseud"].nunique()),
-        ("Cruzados com Instana (R1) - pendente", 0),
     ]
     return pd.DataFrame([{"ordem": i + 1, "etapa": e, "n": n, "pct_total": 100 * n / total}
                          for i, (e, n) in enumerate(etapas)])
@@ -113,7 +112,6 @@ def main() -> None:
                      (tx, "resultados_taxas"), (poi, "modelo_poisson"), (nos, "grafo_nos"),
                      (arestas, "grafo_arestas"), (perf, "perfis")]:
         db.gravar(df, nome, eng)
-    db.recriar_tabelas(eng, ["instana_requests"])
     print("    OK:", eng.url.render_as_string(hide_password=True))
 
 

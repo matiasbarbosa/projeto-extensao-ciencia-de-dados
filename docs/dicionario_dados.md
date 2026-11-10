@@ -81,7 +81,12 @@ termo, irr (razão de taxas), ic_inf, ic_sup, p_valor. Referência: Samsung, And
 - aresta: par de atributos no mesmo incidente; peso = nº de incidentes; lift
   populacional (só pares de atributos de aparelho).
 
-## instana_requests — requisições ao PRD (R1, pendente)
+## IBM Instana — restrição de escopo e segurança
+
+Os registros do Instana permanecem no ambiente corporativo de trabalho e podem conter dados
+sensíveis. Não são exportados, armazenados, integrados às outras fontes ou exibidos no dashboard.
+Eventuais consultas operacionais ocorrem apenas no trabalho. O funil e as análises acadêmicas
+usam ServiceNow e Google Play Console; não há tabela de dados do Instana no esquema do projeto.
 
 ## perfis — perfis de aparelho (mapa e ranking do dashboard)
 

@@ -60,7 +60,7 @@ data/processed/           bases tratadas e resultados (CSV)
    incidentes (simulados ou anonimizados na origem).
 2. **Limpeza e tratamento** — ver seção abaixo.
 3. **Rastreabilidade** — tabela `lineage` (funil: total → técnicos → casados ao catálogo →
-   com versão do Android → participantes distintos → cruzados com Instana).
+   com versão do Android → participantes distintos).
 4. **Análise** — taxa de participantes afetados por mil aparelhos, por grupo, com IC 95%
    exato de Poisson; teste binomial exato do grupo contra a base; correção de
    Benjamini-Hochberg; risco relativo; GLM de Poisson com offset log(base).
@@ -106,7 +106,9 @@ data/processed/           bases tratadas e resultados (CSV)
 - Só entra quem abriu chamado (viés de quem reporta).
 - O Play Console é uma foto; os incidentes cobrem um período.
 - Associação ≠ causa. iOS fora do escopo (sem dados).
-- Cruzamento com o IBM Instana (R1) pendente.
+- **IBM Instana fora da base do projeto:** registros operacionais podem conter dados sensíveis,
+  permanecem no ambiente de trabalho e não são exportados, integrados ou exibidos no repositório,
+  relatório ou dashboard. Eventuais consultas no Instana são feitas exclusivamente no trabalho.
 
 ## Prioridade de investigação: Android 15 no moto g35 5G
 

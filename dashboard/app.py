@@ -295,7 +295,8 @@ with aba[5]:
 - **ServiceNow**: incidentes de login. {"**Nesta visão, simulados.**" if fonte == "simulado" else "Anonimizados na origem."}
 - **Pesquisa pública** (só para contexto dos perfis): páginas de suporte da Motorola, notícias sobre atualizações,
   Don't kill my app! e documentação do Android. As fontes aparecem no painel de cada perfil.
-- **IBM Instana** (R1): cruzamento pendente.
+- **IBM Instana**: seus registros permanecem no ambiente corporativo de trabalho. Por conterem dados sensíveis,
+  não são exportados nem integrados ao projeto, ao repositório ou a este dashboard.
 
 #### Limitações
 - Incidente não é aparelho nem pessoa: as taxas contam participantes distintos.
@@ -304,6 +305,8 @@ with aba[5]:
   imputadas (regra '{config.REGRA_SDK}'). As versões listadas no catálogo não confirmam a versão de cada caso.
 - **Android 15 no moto g35 5G** é prioridade de teste, não uma causa confirmada nem uma versão comprovada nos casos.
 - O Play Console é uma foto de um momento; os incidentes cobrem um período.
+- A ferramenta IBM Instana não compõe a base acadêmica: consultas operacionais ocorrem somente no ambiente de trabalho;
+  nenhum dado do Instana é exibido aqui.
 - Resultados indicam **associação**, não causa. A hipótese técnica de cada perfil precisa ser validada pelo time do app.
 - iOS fica fora das taxas, por falta de catálogo.
 

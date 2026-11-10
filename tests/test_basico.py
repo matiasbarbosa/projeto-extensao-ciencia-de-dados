@@ -92,3 +92,14 @@ def test_versoes_do_modelo_nao_confirmam_versao_do_caso():
     assert all(v in contexto for v in ("14", "15", "16"))
     assert "uso nos casos não confirmado" in contexto
     assert versoes_do_modelo(None) == "não informada"
+
+
+def test_funil_exclui_instana_do_escopo_do_projeto():
+    import pandas as pd
+    from src.pipeline import funil
+
+    inc = pd.DataFrame({"classe_erro": ["tecnico"], "so": ["android"]})
+    tec = pd.DataFrame({"sdk_origem": ["sdk_max_do_modelo"], "marca": ["Motorola"],
+                        "model_id": [1], "participante_pseud": ["p1"]})
+    etapas = funil(inc, tec)["etapa"]
+    assert not etapas.str.contains("Instana", case=False).any()

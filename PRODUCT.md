@@ -41,9 +41,10 @@ confiança, e quais não têm diferença clara. **Não** se busca a causa raiz.
 
 Compara **taxas** contra a base instalada real do Google Play Console em vez de contar chamados.
 Uma marca que domina a base sempre terá mais incidentes; o projeto mostra quem está acima do
-esperado para o seu tamanho. Junta ServiceNow, Google Play Console e (pendente) IBM Instana com
-rastreabilidade explícita (funil de dados) e usa um grafo de co-ocorrência de atributos para
-revelar combinações super-representadas.
+esperado para o seu tamanho. Junta ServiceNow e Google Play Console com rastreabilidade explícita
+(funil de dados) e usa um grafo de co-ocorrência de atributos para revelar combinações
+super-representadas. O IBM Instana permanece restrito ao ambiente corporativo e não fornece dados
+ao produto acadêmico.
 
 ## Contexto Operacional
 
@@ -54,10 +55,11 @@ revelar combinações super-representadas.
     pelo parceiro, remoção de dados pessoais do texto).
   - **Google Play Console**: catálogo de aparelhos com o app instalado e base de instalação por
     modelo (aparelhos ativos, não pessoas).
-  - **IBM Instana**: requisições ao ambiente de produção; cruzamento R1 ainda pendente.
-- Relacionamentos: R1 ServiceNow ↔ Instana (por pseudônimo do participante), R2 ServiceNow ↔
-  Play Console (por modelo, via correspondência de nome livre), R3 Instana ↔ Play Console
-  (validação, se o Instana capturar aparelho).
+  - **IBM Instana**: ferramenta operacional disponível apenas no ambiente corporativo. Por conter
+    dados sensíveis, seus registros não são exportados ou integrados à análise acadêmica.
+- Relacionamento analítico utilizado: ServiceNow ↔ Play Console (por modelo, via correspondência
+  de nome livre). Eventuais consultas ao Instana ocorrem exclusivamente no trabalho e não são
+  parte do escopo do pipeline nem do dashboard.
 - O dashboard lê do MariaDB (ou SQLite) e cai para os CSVs de `data/processed/` quando não há
   banco, para funcionar hospedado.
 - Fluxo: ingestão → limpeza e tratamento → rastreabilidade (funil) → análise (taxas por mil,
@@ -86,7 +88,8 @@ revelar combinações super-representadas.
   "conta/cadastro", "taxa por mil aparelhos", "acima do esperado (FDR < 5%)".
 - Uso acadêmico dos dados autorizado pelo parceiro (registro no Plano de Ação, fora do
   repositório). Entregáveis públicos seguem com base simulada e agregados, por sigilo.
-- Em aberto: cruzamento com Instana (R1); se o Instana tem monitoramento mobile.
+- Restrição: nenhum registro, trace, identificador ou métrica do Instana é exportado, integrado,
+  versionado ou exibido no projeto; a ferramenta é consultada somente dentro do ambiente de trabalho.
 
 ## Compromissos
 
@@ -104,7 +107,7 @@ revelar combinações super-representadas.
 - Incidentes reais anonimizados existem só localmente (`data/raw/servicenow/`, fora do Git).
 - Documentação: `docs/dicionario_dados.md`, `docs/exportar_servicenow.md`, `README.md`.
 - Não existem e não devem ser inventados: depoimentos, validação do parceiro sobre os achados,
-  causa raiz confirmada, dados de iOS, cruzamento com Instana.
+  causa raiz confirmada, dados de iOS ou resultados derivados do IBM Instana.
 
 ## Princípios
 

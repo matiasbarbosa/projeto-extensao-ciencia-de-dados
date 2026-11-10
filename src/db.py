@@ -82,18 +82,6 @@ incidents = Table(
     comment="Incidentes de login (anonimizados ou simulados)",
 )
 
-instana_requests = Table(
-    "instana_requests", metadata,
-    Column("req_id", String(24), primary_key=True),
-    Column("participante_pseud", String(16), index=True),
-    Column("ts", DateTime),
-    Column("servico", String(60)),
-    Column("endpoint", String(120)),
-    Column("http_status", Integer),
-    Column("latencia_ms", Integer),
-    comment="Requisições ao PRD (pseudonimizadas na origem) - R1",
-)
-
 error_class = Table(
     "error_class", metadata,
     Column("regra_id", Integer, primary_key=True, autoincrement=False),
