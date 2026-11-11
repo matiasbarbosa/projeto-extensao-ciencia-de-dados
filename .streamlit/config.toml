@@ -11,4 +11,25 @@ primaryColor = "#1fb5ac"
 backgroundColor = "#262b30"
 secondaryBackgroundColor = "#1c2024"
 textColor = "#e6e9ec"
-font = "sans serif"
+font = "Plex, Plex Fallback, sans-serif"
+codeFont = "PlexMono, PlexMono Fallback, monospace"
+
+[[theme.fontFaces]]
+family = "Plex"
+url = "app/static/fonts/IBMPlexSans-Regular.woff2"
+weight = "400"
+
+[[theme.fontFaces]]
+family = "Plex"
+url = "app/static/fonts/IBMPlexSans-Medium.woff2"
+weight = "500"
+
+[[theme.fontFaces]]
+family = "Plex"
+url = "app/static/fonts/IBMPlexSans-SemiBold.woff2"
+weight = "600"
+
+[[theme.fontFaces]]
+family = "PlexMono"
+url = "app/static/fonts/IBMPlexMono-Regular.woff2"
+weight = "400"
