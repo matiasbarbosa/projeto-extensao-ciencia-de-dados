@@ -34,6 +34,15 @@ Sem MariaDB: use `DB_URL=sqlite:///data/processed/projeto.sqlite` no `.env`, ou
 
 Semente fixa: `SEED = 20261014` em `src/config.py`.
 
+**Notebook de análise exploratória** (`notebooks/01_analise_exploratoria.ipynb`): refaz o pipeline
+inteiro com a base simulada (sem banco e sem dados reais), audita a qualidade dos dados, apresenta
+cada resultado com interpretação e, no fim, confere que tudo coincide com `data/processed/`.
+
+```bash
+pip install -r requirements-notebook.txt
+# abra o notebook no VS Code ou no Jupyter e use "Executar tudo"
+```
+
 ## Estrutura
 
 ```
@@ -48,6 +57,8 @@ src/
   grafo.py                grafo de atributos (NetworkX), centralidade, comunidades, lift
   pipeline.py             orquestra tudo
 dashboard/app.py          Streamlit
+notebooks/                análise exploratória reproduzível (base simulada)
+tests/                    testes automatizados (pytest)
 sql/schema.sql            DDL do MariaDB
 docs/                     dicionário de dados, guia de exportação do ServiceNow
 data/raw/                 catálogo do Play Console (export servicenow fica fora do Git)

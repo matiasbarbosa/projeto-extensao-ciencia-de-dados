@@ -1,0 +1,8 @@
+# Dependências extras para abrir e executar notebooks/01_analise_exploratoria.ipynb
+# (o dashboard e o pipeline não precisam deste arquivo)
+-r requirements.txt
+matplotlib==3.11.2
+ipykernel==7.4.0
+nbclient==0.11.0
+nbformat==5.11.1
+# Para abrir o notebook: VS Code (extensão Jupyter) ou `pip install jupyterlab`
