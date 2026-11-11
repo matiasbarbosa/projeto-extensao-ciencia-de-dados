@@ -410,7 +410,7 @@ function painel() {
     ${d.poucos ? `<p class="aviso-poucos">Menos de __KMIN__ participantes: números detalhados omitidos por privacidade.</p>` : ''}
     <details open><summary>Ocorrências ${SETA}</summary><dl>
       ${item('Participantes afetados', d.afet, 'grande')}
-      ${item('Ocorrências de login (Android)', d.ocorr)}${item('Técnicas', d.tec)}
+      ${item('Ocorrências de login (Android)', d.ocorr)}
       ${item('Aparelhos ativos (Play Console)', d.base)}
       ${item('Taxa por mil aparelhos', d.taxa ? `${d.taxa} <span style="color:#5b6670">(IC 95%: ${d.ic})</span>` : null)}
       ${item('Risco relativo', d.rr ? `${d.rr} vezes a taxa dos demais perfis` : null)}
