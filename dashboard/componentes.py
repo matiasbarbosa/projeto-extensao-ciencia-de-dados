@@ -260,8 +260,7 @@ const ordem = [...DADOS].sort((a, b) => (a.rank ?? 1e9) - (b.rank ?? 1e9));
 const ordemZonas = ['Samsung','Motorola','Xiaomi/Redmi/POCO','Outras','Sem marca','iOS'];
 const zonas = ordemZonas.map(z => ({nome: z, itens: DADOS.filter(d => d.zona === z)})).filter(z => z.itens.length);
 // tamanho de cada zona e posição em duas fileiras diagonais
-let cursor = {x: 0, y: 0};
-zonas.forEach((z, i) => {
+zonas.forEach(z => {
   z.cols = Math.max(2, Math.ceil(Math.sqrt(z.itens.length * 1.3)));
   z.rows = Math.max(2, Math.ceil(z.itens.length / z.cols));
 });
@@ -299,8 +298,8 @@ function desenhar() {
     el('polygon', {points: pts([a, b, c, d]), fill: 'rgba(255,255,255,.035)', stroke: ZCOR[z.nome] || '#ccc', 'stroke-opacity': .55, 'stroke-width': 1}, camChao);
     const g = el('g', {}, camRotulos), txt = `${z.nome} · ${z.itens.length}`;
     const w = txt.length * 6.9 + 16;
-    el('rect', {x: d[0] - w / 2 + 6, y: d[1] + 6, width: w, height: 20, rx: 3, fill: ZCOR[z.nome] || '#ccc'}, g);
-    const t = el('text', {x: d[0] + 6, y: d[1] + 20, 'text-anchor': 'middle', class: 'rotulo-zona', fill: '#22282d'}, g);
+    el('rect', {x: d[0] + 4 - w, y: d[1] + 4, width: w, height: 20, rx: 3, fill: ZCOR[z.nome] || '#ccc'}, g);
+    const t = el('text', {x: d[0] + 4 - w / 2, y: d[1] + 18, 'text-anchor': 'middle', class: 'rotulo-zona', fill: '#22282d'}, g);
     t.textContent = txt;
   });
   [...DADOS].sort((p, q) => (p.gx + p.gy) - (q.gx + q.gy)).forEach(d => {
