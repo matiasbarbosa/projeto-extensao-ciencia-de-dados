@@ -168,7 +168,7 @@ summary::-webkit-details-marker{display:none}
 summary .seta{transition:transform .2s ease-out;width:12px;height:12px;position:static}
 details[open] summary .seta{transform:rotate(180deg)}
 dl{margin:0;padding:0 18px 12px}
-dt{font:500 var(--f-meta)/1.3 var(--fam);color:#4c5862;margin-top:10px}
+dt{font:500 var(--f-meta)/1.3 var(--fam);color:#4c5862;margin-top:10px;display:flex;align-items:center;gap:5px}.info{width:16px;height:16px;padding:0;border:1px solid #7d8992;border-radius:50%;background:#eef1f3;color:#3a444c;font:600 11px/14px var(--fam);text-align:center;cursor:help}.info:hover,.info:focus-visible{background:#d9f3f1;border-color:var(--teal2);color:#147c76;outline:none}
 dd{margin:2px 0 0;font-size:var(--f-corpo);line-height:1.4;color:var(--ptinta);font-variant-numeric:tabular-nums}
 dd.grande{font:600 var(--f-secao)/1.25 var(--fam);color:var(--ptinta)}
 .barra{display:grid;grid-template-columns:1fr 40px;gap:8px;align-items:center;margin-top:6px;font-size:var(--f-corpo);line-height:1.35;color:#3a444c}
@@ -383,7 +383,11 @@ function dica(d, e) {
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
 const SETA = '<svg class="seta" viewBox="0 0 12 12"><path d="M2 8l4-4 4 4" fill="none" stroke="#5b6670" stroke-width="1.6"/></svg>';
 const ICONE = c => `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="${c}" stroke-width="1.8"/><path d="M10 18.5h4" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/></svg>`;
-function item(t, v, cls = '') { return v == null || v === '' ? '' : `<dt>${t}</dt><dd class="${cls}">${v}</dd>`; }
+function item(t, v, cls = '', title = '') {
+  if (v == null || v === '') return '';
+  const info = title ? ` <button class="info" type="button" aria-label="Informação sobre ${esc(t)}" title="${esc(title)}">i</button>` : '';
+  return `<dt>${t}${info}</dt><dd class="${cls}">${v}</dd>`;
+}
 function selecionar(id, focar = true) { selecionado = id; foco = id; desenhar(); painel(); ajustarVista(false); if (focar && cubos[id]) cubos[id].focus({preventScroll: true}); }
 function navegar(passo, origem) {
   const i = ordem.findIndex(x => x.id === selecionado), alvo = ordem[i + passo];
@@ -409,16 +413,16 @@ function painel() {
     <div id="rolagem">
     ${d.poucos ? `<p class="aviso-poucos">Menos de __KMIN__ participantes: números detalhados omitidos por privacidade.</p>` : ''}
     <details open><summary>Ocorrências ${SETA}</summary><dl>
-      ${item('Participantes afetados', d.afet, 'grande')}
-      ${item('Ocorrências de login (Android)', d.ocorr)}
-      ${item('Aparelhos ativos (Play Console)', d.base)}
-      ${item('Taxa por mil aparelhos', d.taxa ? `${d.taxa} <span style="color:#5b6670">(IC 95%: ${d.ic})</span>` : null)}
-      ${item('Risco relativo', d.rr ? `${d.rr} vezes a taxa dos demais perfis` : null)}
-      ${item('Período dos casos', d.periodo)}
+      ${item('Participantes afetados', d.afet, 'grande', 'Número de participantes distintos com incidente técnico identificado neste perfil.')}
+      ${item('Ocorrências de login (Android)', d.ocorr, '', 'Quantidade de incidentes de login registrados para este perfil em dispositivos Android.')}
+      ${item('Ativo', d.base, '', 'No Google Play Console, indica dispositivos Android com o app instalado que se conectaram aos servidores do Google pelo menos uma vez nos últimos 30 dias. Não representa usuários nem uso do app.')}
+      ${item('Taxa por mil aparelhos', d.taxa ? `${d.taxa} <span style="color:#5b6670">(IC 95%: ${d.ic})</span>` : null, '', 'Participantes afetados por mil aparelhos ativos. O intervalo entre parênteses é o intervalo de confiança de 95%.')}
+      ${item('Risco relativo', d.rr ? `${d.rr} vezes a taxa dos demais perfis` : null, '', 'Compara a taxa deste perfil com a taxa dos demais perfis. Valores acima de 1 indicam taxa maior neste perfil.')}
+      ${item('Período dos casos', d.periodo, '', 'Intervalo de tempo em que os incidentes considerados nesta análise foram registrados.')}
     </dl></details>
     <details open><summary>Sistema ${SETA}</summary><dl>
-      ${item('Marca', esc(d.marca))}${item('Chip (SoC)', esc(d.chip))}${item('Memória', esc(d.ram))}
-      ${item('Android listado para o modelo', esc(d.androidPeriodo))}
+      ${item('Marca', esc(d.marca), '', 'Marca do aparelho conforme o catálogo do Google Play Console.')}${item('Chip (SoC)', esc(d.chip), '', 'Sistema em chip identificado para o modelo no catálogo do Google Play Console.')}${item('Memória', esc(d.ram), '', 'Faixa de memória informada para o modelo no catálogo do Google Play Console.')}
+      ${item('Android listado para o modelo', esc(d.androidPeriodo), '', 'Versões do Android listadas no catálogo para este modelo. Isso não confirma a versão usada em cada incidente.')}
     </dl></details>
     ${d.sintomas.length ? `<details open><summary>Sintomas relatados ${SETA}</summary><dl>${d.sintomas.map(([s, v]) =>
       `<div class="barra"><span class="t">${esc(s)}</span><i><b style="width:${v}%"></b></i><span>${v}%</span></div>`).join('')}</dl></details>` : ''}

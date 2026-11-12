@@ -25,7 +25,7 @@ CREATE TABLE devices_catalog (
 	abis VARCHAR(120), 
 	sdk_list VARCHAR(80) COMMENT 'versões de SDK separadas por ;', 
 	sdk_max INTEGER, 
-	install_n INTEGER COMMENT 'aparelhos ativos com o app', 
+	install_n INTEGER COMMENT 'aparelhos ativos no Google Play Console: dispositivos Android com o app instalado e conectados aos servidores do Google nos últimos 30 dias',
 	anr_rate FLOAT, 
 	crash_rate FLOAT, 
 	PRIMARY KEY (model_id)

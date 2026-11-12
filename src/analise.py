@@ -2,7 +2,7 @@
 
 Unidade de contagem: participantes distintos com incidente TÉCNICO cujo
 aparelho foi casado com o catálogo (um participante com 3 chamados conta 1).
-Denominador: base de instalação do Play Console (aparelhos ativos).
+Denominador: base de instalação do Play Console (aparelhos ativos: dispositivos Android com o app instalado que se conectaram aos servidores do Google nos últimos 30 dias).
 
 Para a versão do Android, o denominador é estimado (ver config.REGRA_SDK) e
 só entram incidentes que informaram a versão (suposição: a falta da versão no
@@ -113,7 +113,7 @@ def taxas(tec: pd.DataFrame, pop: pd.DataFrame, k_min: int = config.K_MIN) -> pd
 
 
 def taxa_geral(tec: pd.DataFrame, cat: pd.DataFrame) -> float:
-    """Participantes com incidente técnico em Android por mil aparelhos Android ativos."""
+    """Participantes com incidente técnico em Android por mil aparelhos ativos do Google Play Console."""
     return 1000 * tec["participante_pseud"].nunique() / cat["install_n"].sum()
 
 

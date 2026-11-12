@@ -455,7 +455,7 @@ def aba_sobre():
         st.markdown(f"""
 #### Fontes
 - **Google Play Console**: catálogo de aparelhos com o app instalado (modelo, marca, RAM, chip, versões do Android,
-  base de instalação). A base conta aparelhos ativos, não pessoas.
+  base de instalação). A base conta **aparelhos ativos no Google Play Console**; não conta pessoas e não indica que o app foi aberto ou usado. A definição completa está no ícone de informação junto à métrica.
 - **ServiceNow**: incidentes de login. {"**Nesta visão, simulados.**" if fonte == "simulado" else "Anonimizados na origem."}
 - **Pesquisa pública** (só para contexto dos perfis): páginas de suporte da Motorola, notícias sobre atualizações,
   Don't kill my app! e documentação do Android. As fontes aparecem no painel de cada perfil.

@@ -54,7 +54,7 @@ ao produto acadêmico.
     `src/sanitizar_servicenow.py` antes de sair (ID fictício, pseudônimo HMAC com sal mantido
     pelo parceiro, remoção de dados pessoais do texto).
   - **Google Play Console**: catálogo de aparelhos com o app instalado e base de instalação por
-    modelo (aparelhos ativos, não pessoas).
+    modelo (aparelhos ativos no Google Play Console, não pessoas).
   - **IBM Instana**: ferramenta operacional disponível apenas no ambiente corporativo. Por conter
     dados sensíveis, seus registros não são exportados ou integrados à análise acadêmica.
 - Relacionamento analítico utilizado: ServiceNow ↔ Play Console (por modelo, via correspondência

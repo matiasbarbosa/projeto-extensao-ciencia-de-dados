@@ -36,7 +36,7 @@ devices_catalog = Table(
     Column("abis", String(120)),
     Column("sdk_list", String(80), comment="versões de SDK separadas por ;"),
     Column("sdk_max", Integer),
-    Column("install_n", Integer, comment="aparelhos ativos com o app"),
+    Column("install_n", Integer, comment="aparelhos ativos no Google Play Console: dispositivos Android com o app instalado e conectados aos servidores do Google nos últimos 30 dias"),
     Column("anr_rate", Float),
     Column("crash_rate", Float),
     comment="Catálogo do Google Play Console (uma linha por modelo)",

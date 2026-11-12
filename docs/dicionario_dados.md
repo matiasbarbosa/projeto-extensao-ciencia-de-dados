@@ -19,7 +19,7 @@ Os mesmos dados ficam em CSV em `data/processed/`.
 | abis | texto | arquiteturas, separadas por `;` |
 | sdk_list | texto | níveis de API do Android, separados por `;` |
 | sdk_max | int | maior nível de API listado |
-| install_n | int | aparelhos ativos com o app (foto do momento da extração) |
+| install_n | int | aparelhos Android ativos no Google Play Console (conectados aos servidores do Google nos últimos 30 dias) (foto do momento da extração; não representa uso do app) |
 | anr_rate / crash_rate | real | taxas percebidas pelo usuário (fração) |
 
 ## device_sdk — modelo × versão do Android
@@ -61,7 +61,7 @@ Os mesmos dados ficam em CSV em `data/processed/`.
 | dimensao / grupo | ex.: `marca_android` / `Motorola \| 15` |
 | afetados | participantes distintos com incidente técnico |
 | incidentes | número de chamados |
-| base | aparelhos ativos do grupo (estimado quando envolve versão do Android) |
+| base | aparelhos ativos do grupo (conectados nos últimos 30 dias) (estimado quando envolve versão do Android) |
 | taxa_por_mil | afetados por mil aparelhos |
 | ic_inf / ic_sup | IC 95% exato de Poisson |
 | risco_relativo | taxa do grupo / taxa do restante |
