@@ -25,6 +25,8 @@ FONTES = {
     "estado_app": ("Android Developers - preservação do estado após encerramento do processo",
                    "https://developer.android.com/topic/libraries/architecture/saving-states"),
     "play_console": ("Catálogo do Google Play Console do app (versões de SDK por modelo)", None),
+    "b2c_troubleshoot": ("Microsoft Learn — solução de problemas do Azure AD B2C", "https://learn.microsoft.com/en-us/azure/active-directory-b2c/troubleshoot"),
+    "b2c_errors": ("Microsoft Learn — códigos e mensagens de erro do Azure AD B2C", "https://learn.microsoft.com/en-us/azure/active-directory-b2c/error-codes"),
 }
 
 PERFIL_PESQUISA = {
@@ -63,4 +65,9 @@ def fontes_de(modelo: str, marca: str | None, soc_fab: str | None) -> list[tuple
     if marca == "Motorola" and "dkma_motorola" not in chaves:
         chaves.append("dkma_motorola")
     chaves.append("play_console")
+    # A pesquisa B2C é contextual: não afirma que o perfil causou o erro.
+    # Os links oficiais ajudam a comparar os sintomas com a documentação do autenticador.
+    for chave in ("b2c_troubleshoot", "b2c_errors"):
+        if chave not in chaves:
+            chaves.append(chave)
     return [FONTES[c] for c in chaves]

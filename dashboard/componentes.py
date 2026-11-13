@@ -121,6 +121,7 @@ def _registro(r: pd.Series, k_min: int) -> dict:
         "resumo": r["resumo"] if isinstance(r["resumo"], str) else "",
         "hipotese": r["hipotese"] if isinstance(r["hipotese"], str) else "",
         "fontes": [[str(t), _url_segura(u)] for t, u in _pares(r["fontes_json"])],
+        "b2cRelacao": "Os registros disponíveis são incidentes de login associados a este modelo, chip e às versões Android listadas. O contexto público inclui documentação oficial do Azure AD B2C para comparação de sintomas e códigos. Não foi encontrado no conjunto de dados um marcador separado que confirme que o erro ocorreu especificamente no autenticador B2C do site; portanto, a relação é uma associação para investigação, não uma confirmação de causa.",
         "poucos": bool(poucos),
     }
 
@@ -383,6 +384,7 @@ function dica(d, e) {
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
 const SETA = '<svg class="seta" viewBox="0 0 12 12"><path d="M2 8l4-4 4 4" fill="none" stroke="#5b6670" stroke-width="1.6"/></svg>';
 const ICONE = c => `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="${c}" stroke-width="1.8"/><path d="M10 18.5h4" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+const info = (label, text) => `<button class="info" type="button" aria-label="Informação sobre ${esc(label)}" title="${esc(text)}">i</button>`;
 function item(t, v, cls = '', title = '') {
   if (v == null || v === '') return '';
   const info = title ? ` <button class="info" type="button" aria-label="Informação sobre ${esc(t)}" title="${esc(title)}">i</button>` : '';
@@ -424,13 +426,16 @@ function painel() {
       ${item('Marca', esc(d.marca), '', 'Marca do aparelho conforme o catálogo do Google Play Console.')}${item('Chip (SoC)', esc(d.chip), '', 'Sistema em chip identificado para o modelo no catálogo do Google Play Console.')}${item('Memória', esc(d.ram), '', 'Faixa de memória informada para o modelo no catálogo do Google Play Console.')}
       ${item('Android listado para o modelo', esc(d.androidPeriodo), '', 'Versões do Android listadas no catálogo para este modelo. Isso não confirma a versão usada em cada incidente.')}
     </dl></details>
-    ${d.sintomas.length ? `<details open><summary>Sintomas relatados ${SETA}</summary><dl>${d.sintomas.map(([s, v]) =>
-      `<div class="barra"><span class="t">${esc(s)}</span><i><b style="width:${v}%"></b></i><span>${v}%</span></div>`).join('')}</dl></details>` : ''}
-    ${d.apps.length ? `<details open><summary>Versões do app nos casos ${SETA}</summary><dl><div class="chips">${d.apps.map(([v, n]) =>
-      `<span>${esc(v)} · ${n}</span>`).join('')}</div></dl></details>` : ''}
-    ${d.resumo || d.hipotese || d.fontes.length ? `<details open><summary>Contexto público ${SETA}</summary>
+    ${d.sintomas.length ? `<details open><summary>Sintomas relatados ${info('Sintomas relatados', 'Distribuição dos tipos de erro de login classificados nos incidentes deste perfil.')} ${SETA}</summary><dl>${d.sintomas.map(([s, v]) =>
+      `<div class="barra"><span class="t">${esc(s)} ${info(s, 'Tipo de erro de login classificado nos incidentes associados a este perfil.')}</span><i><b style="width:${v}%"></b></i><span>${v}%</span></div>`).join('')}</dl></details>` : ''}
+    ${d.apps.length ? `<details open><summary>Versões do app nos casos ${info('Versões do app nos casos', 'Versões do aplicativo informadas nos incidentes associados a este perfil.')} ${SETA}</summary><dl><div class="chips">${d.apps.map(([v, n]) =>
+      `<span title="Versão informada em ${n} incidente(s)">${esc(v)} · ${n}</span>`).join('')}</div></dl></details>` : ''}
+    <details open><summary>Relação com login B2C ${info('Relação com login B2C', 'Indica o que os dados permitem concluir sobre a relação entre o perfil do aparelho e erros de login no autenticador B2C do site.')} ${SETA}</summary>
+      <p class="texto">${esc(d.b2cRelacao)}</p>
+    </details>
+    ${d.resumo || d.hipotese || d.fontes.length ? `<details open><summary>Contexto público ${info('Contexto público', 'Informações externas e hipóteses de investigação sobre o modelo, o chip e as versões do Android.')} ${SETA}</summary>
       ${d.resumo ? `<p class="texto">${esc(d.resumo)}</p>` : ''}
-      ${d.hipotese ? `<div class="hip"><strong>Hipótese, a validar</strong>${esc(d.hipotese)}</div>` : ''}
+      ${d.hipotese ? `<div class="hip"><strong>Hipótese, a validar</strong> ${info('Hipótese, a validar', 'Interpretação para investigação; não é uma causa comprovada.')} ${esc(d.hipotese)}</div>` : ''}
       ${d.fontes.length ? `<ul class="fontes">${d.fontes.map(([t, u]) => u ? `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>` : `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
     </details>` : ''}
     </div>`;

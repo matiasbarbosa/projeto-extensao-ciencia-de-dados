@@ -107,3 +107,5 @@ sem modelo, sem marca e de iPhone.
 | status | critico (>= 5 afetados, significativo, RR >= 5), acima, atencao, normal, sem_base |
 | sintoma, sintoma_pct, sintomas_json, versoes_app_json | sintoma predominante e distribuições |
 | resumo, hipotese, fontes_json | contexto público, hipótese a validar e fontes consultadas |
+
+> **Relação com login B2C:** os incidentes classificados são problemas de login e podem ser analisados por modelo, chip e versão Android listada. O conjunto de dados não possui um marcador separado que confirme falha no autenticador B2C do site; qualquer relação exibida no dashboard é associação para investigação, não causa comprovada.
